@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measurements - Tailor Shop Management System</title>
+    <link rel="stylesheet" href="../css/records.css">
+    <link rel="stylesheet" href="../css/soft-theme.css">
+</head>
+<body>
+
+    <header class="page-header">
+        <div>
+            <h1>Measurement Management</h1>
+            <p>Manage customer clothing measurements and history</p>
+        </div>
+
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="admin-dashboard.html">Dashboard</a>
+            <a href="customers.html">Customers</a>
+            <a href="login.html">Logout</a>
+        </nav>
+    </header>
+
+    <main class="page-container">
+
+        <section class="toolbar">
+            <div>
+                <h2>Measurement Records</h2>
+                <p>View saved measurements for different clothing types.</p>
+            </div>
+
+            <a href="measurement-form.html" class="btn">Add Measurement</a>
+        </section>
+
+        <section class="search-box">
+            <label for="measurement-search">Search Measurements</label>
+            <input
+                type="search"
+                id="measurement-search"
+                placeholder="Search by customer name or clothing type"
+            >
+        </section>
+
+        <section class="table-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Customer Name</th>
+                        <th>Clothing Type</th>
+                        <th>Measurement Date</th>
+                        <th>Recorded By</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Sample Customer</td>
+                        <td>Shirt</td>
+                        <td>08 October 2026</td>
+                        <td>Sample Staff</td>
+                        <td>
+                            <a href="measurement-history.html">History</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>Demo Customer</td>
+                        <td>Pant</td>
+                        <td>07 October 2026</td>
+                        <td>Sample Staff</td>
+                        <td>
+                            <a href="measurement-history.html">History</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <p style="margin-top: 22px;">
+            <a href="admin-dashboard.html">← Back to Dashboard</a>
+        </p>
+
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 Tailor Shop Management System</p>
+    </footer>
+
+</body>
+</html>

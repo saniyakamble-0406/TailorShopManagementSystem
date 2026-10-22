@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Staff - Tailor Shop Management System</title>
+
+    <meta
+        name="description"
+        content="Create or update staff information in TailorShop."
+    >
+
+    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="../css/soft-theme.css">
+</head>
+
+<body>
+
+    <!-- Page Header -->
+    <header class="form-header">
+        <div>
+            <h1>Add Staff Member</h1>
+            <p>Enter staff details and employment information</p>
+        </div>
+
+        <nav aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="admin-dashboard.html">Dashboard</a>
+            <a href="staff.html">Staff Members</a>
+        </nav>
+    </header>
+
+
+    <!-- Main Form -->
+    <main class="form-container">
+
+        <form class="customer-form">
+
+            <section class="form-section">
+                <h2>Staff Information</h2>
+
+                <div class="form-grid">
+
+                    <!-- Full Name -->
+                    <div class="form-group">
+                        <label for="full_name">Full Name</label>
+
+                        <input
+                            type="text"
+                            id="full_name"
+                            name="full_name"
+                            placeholder="Enter staff full name"
+                            maxlength="150"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Phone Number -->
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter phone number"
+                            maxlength="15"
+                            autocomplete="tel"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Joining Date -->
+                    <div class="form-group">
+                        <label for="joined_date">Joining Date</label>
+
+                        <input
+                            type="date"
+                            id="joined_date"
+                            name="joined_date"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Employment Status -->
+                    <div class="form-group">
+                        <label for="is_active">Employment Status</label>
+
+                        <select
+                            id="is_active"
+                            name="is_active"
+                            required
+                        >
+                            <option value="true">Active</option>
+                            <option value="false">Inactive</option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <!-- Address -->
+                <div class="form-group full-width">
+                    <label for="address">Address</label>
+
+                    <textarea
+                        id="address"
+                        name="address"
+                        rows="4"
+                        placeholder="Enter staff address"
+                    ></textarea>
+                </div>
+
+            </section>
+
+
+            <!-- Form Buttons -->
+            <div class="form-actions">
+
+                <a href="staff.html" class="cancel-btn">
+                    Cancel
+                </a>
+
+                <button type="submit" class="save-btn">
+                    Save Staff Member
+                </button>
+
+            </div>
+
+        </form>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            &copy; 2026 Tailor Shop Management System.
+            All rights reserved.
+        </p>
+    </footer>
+
+
+    <!-- Staff Form JavaScript -->
+    <script src="../js/staff-form.js"></script>
+
+</body>
+</html>

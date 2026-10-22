@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customers - Tailor Shop Management System</title>
+
+    <meta
+        name="description"
+        content="Search and manage customer profiles and contact information."
+    >
+
+    <link rel="stylesheet" href="../css/records.css">
+    <link rel="stylesheet" href="../css/soft-theme.css">
+</head>
+
+<body>
+
+    <!-- ================= PAGE HEADER ================= -->
+
+    <header class="page-header">
+        <div>
+            <h1>Customer Management</h1>
+            <p>Manage customer profiles and contact information</p>
+        </div>
+
+        <nav aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="admin-dashboard.html">Dashboard</a>
+            <a href="login.html">Logout</a>
+        </nav>
+    </header>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="page-container">
+
+        <!-- Page title and Add Customer button -->
+
+        <section class="toolbar">
+            <div>
+                <h2>Customers</h2>
+                <p>Search and manage customer records.</p>
+            </div>
+
+            <a href="customer-form.html" class="btn">
+                + Add Customer
+            </a>
+        </section>
+
+
+        <!-- ================= CUSTOMER SEARCH ================= -->
+
+        <section class="search-box">
+            <label for="customer-search">Search Customer</label>
+
+            <input
+                type="search"
+                id="customer-search"
+                name="customer-search"
+                placeholder="Search by name, phone, email or address"
+                autocomplete="off"
+                list="customer-suggestions"
+                aria-describedby="search-help"
+            >
+
+            <datalist id="customer-suggestions">
+                <!-- Suggestions are added from the customer API by JavaScript. -->
+            </datalist>
+
+            <p id="search-help">
+                Start typing a customer name, phone number or email to search.
+            </p>
+        </section>
+
+
+        <!-- ================= CUSTOMER RECORDS ================= -->
+
+        <section class="table-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td colspan="6">Loading customer records...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+        <p>
+            &copy; 2026 Tailor Shop Management System.
+            All rights reserved.
+        </p>
+    </footer>
+
+
+    <!-- Customer API, Search and Suggestions -->
+    <script src="../js/customers.js"></script>
+
+</body>
+</html>

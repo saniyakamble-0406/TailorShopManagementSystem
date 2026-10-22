@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Service - Tailor Shop Management System</title>
+
+    <meta
+        name="description"
+        content="Create or update tailoring service details, price and completion time."
+    >
+
+    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="../css/soft-theme.css">
+</head>
+
+<body>
+
+    <!-- Page Header -->
+    <header class="form-header">
+        <div>
+            <h1>Add Tailoring Service</h1>
+            <p>Enter service details, price and completion time</p>
+        </div>
+
+        <nav aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="admin-dashboard.html">Dashboard</a>
+            <a href="services.html">Services</a>
+        </nav>
+    </header>
+
+    <!-- Main Form -->
+    <main class="form-container">
+
+        <form class="customer-form">
+
+            <section class="form-section">
+                <h2>Service Information</h2>
+
+                <div class="form-grid">
+
+                    <!-- Service Name -->
+                    <div class="form-group">
+                        <label for="service_name">Service Name</label>
+
+                        <input
+                            type="text"
+                            id="service_name"
+                            name="service_name"
+                            placeholder="e.g. Shirt Stitching"
+                            maxlength="150"
+                            required
+                        >
+                    </div>
+
+                    <!-- Service Price -->
+                    <div class="form-group">
+                        <label for="price">Price (&#8377;)</label>
+
+                        <input
+                            type="number"
+                            id="price"
+                            name="price"
+                            min="0"
+                            step="0.01"
+                            placeholder="Enter service price"
+                            required
+                        >
+                    </div>
+
+                    <!-- Estimated Completion Days -->
+                    <div class="form-group">
+                        <label for="estimated_days">
+                            Estimated Completion Days
+                        </label>
+
+                        <input
+                            type="number"
+                            id="estimated_days"
+                            name="estimated_days"
+                            min="1"
+                            step="1"
+                            placeholder="e.g. 5"
+                            required
+                        >
+                    </div>
+
+                    <!-- Service Status -->
+                    <div class="form-group">
+                        <label for="is_active">Service Status</label>
+
+                        <select
+                            id="is_active"
+                            name="is_active"
+                            required
+                        >
+                            <option value="true">Active</option>
+                            <option value="false">Inactive</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- Description -->
+                <div class="form-group full-width">
+                    <label for="description">Description</label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="5"
+                        placeholder="Describe the tailoring service"
+                    ></textarea>
+                </div>
+
+            </section>
+
+            <!-- Form Actions -->
+            <div class="form-actions">
+
+                <a href="services.html" class="cancel-btn">
+                    Cancel
+                </a>
+
+                <button type="submit" class="save-btn">
+                    Save Service
+                </button>
+
+            </div>
+
+        </form>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            &copy; 2026 Tailor Shop Management System.
+            All rights reserved.
+        </p>
+    </footer>
+
+    <!-- Service Form API Functionality -->
+    <script src="../js/service-form.js"></script>
+
+</body>
+</html>

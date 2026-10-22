@@ -1,0 +1,362 @@
+/* =========================================
+   TAILOR SHOP MANAGEMENT SYSTEM
+   Theme: Lavender, Blush Pink, Cream, Purple
+   ========================================= */
+
+:root {
+    --page-bg: #FFF9F5;
+    --white: #FFFFFF;
+    --light-lavender: #F6EFF9;
+    --pale-lavender: #E8D9F2;
+    --blush-pink: #F4D6E2;
+    --border: #E5D8EB;
+    --text: #35253D;
+    --muted: #786A80;
+    --primary: #6E4778;
+    --primary-hover: #482653;
+    --accent: #D9A6BD;
+}
+
+/* Base */
+
+body {
+    background: var(--page-bg) !important;
+    color: var(--text) !important;
+    line-height: 1.7;
+}
+
+a {
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+/* Navigation */
+
+.navbar,
+.page-header,
+.form-header,
+.dashboard-header {
+    background: var(--white) !important;
+    color: var(--text) !important;
+    border-bottom: 1px solid var(--border) !important;
+    box-shadow: 0 4px 20px rgba(72, 38, 83, 0.07) !important;
+}
+
+.logo,
+.brand h1 {
+    color: var(--primary) !important;
+}
+
+.navbar nav a,
+.dashboard-header nav a,
+.page-header nav a,
+.form-header nav a {
+    color: #62466B !important;
+}
+
+.navbar nav a:hover,
+.dashboard-header nav a:hover,
+.page-header nav a:hover,
+.form-header nav a:hover {
+    color: var(--primary-hover) !important;
+}
+
+/* Homepage Hero */
+
+.hero {
+    background: linear-gradient(
+        125deg,
+        #F6EFF9 0%,
+        #E8D9F2 55%,
+        #F4D6E2 100%
+    ) !important;
+
+    color: var(--text) !important;
+}
+
+.hero h1,
+.section-heading h2,
+.about-content h2,
+.welcome-section h2 {
+    color: var(--primary-hover) !important;
+}
+
+.hero-text,
+.feature-card p,
+.about-content p,
+.dashboard-card p,
+.welcome-section p:last-child {
+    color: var(--muted) !important;
+}
+
+.welcome {
+    background: var(--blush-pink) !important;
+    color: var(--primary-hover) !important;
+    border: 1px solid #EAC7D7;
+}
+
+/* Homepage Features */
+
+.features {
+    background: var(--page-bg) !important;
+}
+
+.feature-card,
+.feature-card:nth-child(1),
+.feature-card:nth-child(2),
+.feature-card:nth-child(3),
+.feature-card:nth-child(4),
+.feature-card:nth-child(5),
+.feature-card:nth-child(6) {
+    background: #FFFCFF !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 8px 24px rgba(72, 38, 83, 0.07) !important;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease !important;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px rgba(72, 38, 83, 0.13) !important;
+}
+
+.feature-card h3 {
+    color: var(--primary) !important;
+}
+
+.section-label,
+.section-heading p {
+    color: var(--primary) !important;
+}
+
+/* About Section */
+
+.about-section {
+    background: linear-gradient(
+        120deg,
+        #F6EFF9,
+        #F4D6E2
+    ) !important;
+}
+
+.about-content h2 {
+    color: var(--primary-hover) !important;
+}
+
+/* Buttons */
+
+button,
+.save-btn,
+.dashboard-card a,
+.btn.primary-btn {
+    background: var(--primary) !important;
+    color: var(--white) !important;
+    border: 1px solid var(--primary) !important;
+    border-radius: 10px;
+    box-shadow: 0 5px 14px rgba(72, 38, 83, 0.13) !important;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease !important;
+}
+
+button:hover,
+.save-btn:hover,
+.dashboard-card a:hover,
+.btn.primary-btn:hover {
+    background: var(--primary-hover) !important;
+    border-color: var(--primary-hover) !important;
+    transform: translateY(-2px);
+}
+
+.btn.secondary-btn,
+.cancel-btn {
+    background: var(--white) !important;
+    color: var(--primary) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px;
+}
+
+.btn.secondary-btn:hover,
+.cancel-btn:hover {
+    background: var(--light-lavender) !important;
+}
+
+/* Login and Registration */
+
+.login-card,
+.register-card {
+    background: var(--white) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 14px 38px rgba(72, 38, 83, 0.10) !important;
+}
+
+.login-card h1,
+.register-card h1 {
+    color: var(--primary-hover) !important;
+}
+
+.subtitle,
+.register-text {
+    color: var(--muted) !important;
+}
+
+.register-text a,
+td a {
+    color: var(--primary) !important;
+}
+
+.register-text a:hover,
+td a:hover {
+    color: var(--primary-hover) !important;
+}
+
+/* Form Fields */
+
+label {
+    color: var(--text) !important;
+    font-weight: 600;
+}
+
+input,
+select,
+textarea {
+    background: var(--white) !important;
+    color: var(--text) !important;
+    border: 1px solid #DCCCE4 !important;
+    border-radius: 10px !important;
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 3px rgba(110, 71, 120, 0.13) !important;
+}
+
+/* Dashboard Welcome */
+
+.welcome-section {
+    background: linear-gradient(
+        120deg,
+        #FFFFFF,
+        #F6EFF9,
+        #FBEFF4
+    ) !important;
+
+    border: 1px solid var(--border) !important;
+    border-radius: 18px !important;
+}
+
+/* Dashboard Summary Cards */
+
+.summary-card,
+.summary-card:nth-child(2),
+.summary-card:nth-child(3),
+.summary-card:nth-child(4) {
+    background: var(--white) !important;
+    border: 1px solid var(--border) !important;
+    border-bottom: 4px solid var(--accent) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 6px 20px rgba(72, 38, 83, 0.06) !important;
+}
+
+.summary-card h3 {
+    color: var(--primary) !important;
+}
+
+/* Dashboard Cards and Tables */
+
+.dashboard-card,
+.toolbar,
+.search-box,
+.table-section,
+.customer-form {
+    background: var(--white) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 6px 20px rgba(72, 38, 83, 0.05) !important;
+}
+
+.dashboard-card h3,
+.toolbar h2 {
+    color: var(--primary-hover) !important;
+}
+
+th {
+    background: var(--light-lavender) !important;
+    color: var(--primary-hover) !important;
+}
+
+td {
+    color: var(--text);
+    border-bottom: 1px solid #F0E7F3 !important;
+}
+
+tr:hover td {
+    background: #FFFAFD;
+}
+
+/* Footer */
+
+.footer {
+    background: var(--primary-hover) !important;
+    color: var(--white) !important;
+    border-top: 1px solid var(--border);
+}
+
+.footer a {
+    color: #F4D6E2;
+}
+
+.footer a:hover {
+    color: var(--white);
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+    .feature-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navbar nav {
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .hero {
+        padding: 50px 6%;
+    }
+
+    .hero h1 {
+        font-size: clamp(30px, 8vw, 38px);
+    }
+
+    .hero-buttons {
+        flex-wrap: wrap;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading h2,
+    .about-content h2 {
+        font-size: 29px;
+    }
+
+    .login-card,
+    .register-card {
+        padding: 25px 20px;
+    }
+}

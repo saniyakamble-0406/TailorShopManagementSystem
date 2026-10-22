@@ -1,0 +1,145 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f6f8;
+    color: #222;
+    line-height: 1.6;
+}
+
+.form-header {
+    background: white;
+    padding: 22px 7%;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.form-header h1 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.form-header p {
+    color: #666;
+}
+
+.form-header nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.form-header nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-container {
+    width: 86%;
+    max-width: 950px;
+    margin: 40px auto;
+}
+
+.customer-form {
+    background: white;
+    padding: 35px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.form-section h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.full-width {
+    margin-top: 22px;
+}
+
+.form-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.cancel-btn,
+.save-btn {
+    padding: 12px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    border: 1px solid #222;
+    color: #222;
+    background: white;
+}
+
+.save-btn {
+    border: none;
+    background: #222;
+    color: white;
+}
+
+.footer {
+    margin-top: 60px;
+    padding: 25px;
+    text-align: center;
+    background: #222;
+    color: white;
+}
+
+@media (max-width: 700px) {
+    .form-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .customer-form {
+        padding: 25px;
+    }
+}

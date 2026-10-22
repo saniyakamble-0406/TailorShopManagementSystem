@@ -1,0 +1,394 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports & Analytics | Tailor Shop</title>
+
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/soft-theme.css">
+
+    <style>
+        .report-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 18px;
+            margin: 24px 0;
+        }
+
+        .report-card {
+            padding: 22px;
+            border-radius: 12px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .report-card p {
+            margin: 0 0 12px;
+            color: #555;
+            font-size: 15px;
+        }
+
+        .report-card h3 {
+            margin: 0;
+            font-size: 27px;
+            color: #26364a;
+        }
+
+        .report-section {
+            background: #ffffff;
+            padding: 20px;
+            margin: 24px 0;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            overflow-x: auto;
+        }
+
+        .report-section h2 {
+            margin-top: 0;
+        }
+
+        .report-section table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .report-section th,
+        .report-section td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .report-section th {
+            background: #f4f6fa;
+        }
+
+        #reportMessage {
+            margin: 12px 0;
+        }
+
+        .report-error {
+            color: #b42318;
+        }
+
+        .report-success {
+            color: #16803c;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="main-content">
+        <header>
+            <h1>Reports &amp; Analytics</h1>
+            <p>Overview of customers, orders, sales and pending payments</p>
+        </header>
+
+        <nav aria-label="Breadcrumb">
+            <a href="../index.html">Home</a> |
+            <a href="admin-dashboard.html">Dashboard</a> |
+            <a href="customers.html">Customers</a> |
+            <a href="orders.html">Orders</a> |
+            <a href="payments.html">Payments</a>
+        </nav>
+
+        <section>
+            <h2>Shop Overview</h2>
+            <p id="reportMessage" role="status">Loading report data...</p>
+
+            <div class="report-grid">
+                <article class="report-card">
+                    <p>Total Customers</p>
+                    <h3 id="totalCustomers">0</h3>
+                </article>
+
+                <article class="report-card">
+                    <p>Total Orders</p>
+                    <h3 id="totalOrders">0</h3>
+                </article>
+
+                <article class="report-card">
+                    <p>Delivered Orders</p>
+                    <h3 id="deliveredOrders">0</h3>
+                </article>
+
+                <article class="report-card">
+                    <p>Total Order Amount</p>
+                    <h3 id="totalOrderAmount">₹0.00</h3>
+                </article>
+
+                <article class="report-card">
+                    <p>Pending Payments</p>
+                    <h3 id="pendingPayments">₹0.00</h3>
+                </article>
+            </div>
+        </section>
+
+        <section class="report-section">
+            <h2>Order Status Report</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order Status</th>
+                        <th>Number of Orders</th>
+                    </tr>
+                </thead>
+                <tbody id="orderStatusBody">
+                    <tr>
+                        <td colspan="2">Loading...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="report-section">
+            <h2>Payment Summary</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Amount (₹)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Total Order Amount</td>
+                        <td id="summaryOrderAmount">₹0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Total Payments Received</td>
+                        <td id="summaryPaymentsReceived">₹0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Pending Amount</td>
+                        <td id="summaryPendingAmount">₹0.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <p><a href="admin-dashboard.html">← Back to Dashboard</a></p>
+
+        <footer>
+            <p>© 2026 Tailor Shop Management System. All rights reserved.</p>
+        </footer>
+    </main>
+
+    <script>
+        "use strict";
+
+        const API_BASE_URL = "http://127.0.0.1:8000/api/";
+
+        const STATUS_LIST = [
+            { key: "received", label: "Received" },
+            { key: "measurement_confirmed", label: "Measurement Confirmed" },
+            { key: "cutting", label: "Cutting" },
+            { key: "stitching", label: "Stitching" },
+            { key: "finishing", label: "Finishing" },
+            { key: "ready", label: "Ready" },
+            { key: "delivered", label: "Delivered" },
+            { key: "alteration", label: "Alteration" },
+            { key: "cancelled", label: "Cancelled" }
+        ];
+
+        function getAuthToken() {
+            return (
+                sessionStorage.getItem("authToken") ||
+                localStorage.getItem("authToken") ||
+                localStorage.getItem("token") ||
+                sessionStorage.getItem("token")
+            );
+        }
+
+        function formatCurrency(amount) {
+            return "₹" + Number(amount || 0).toLocaleString("en-IN", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+
+        async function fetchAllPages(endpoint) {
+            const token = getAuthToken();
+            const headers = {};
+
+            if (token) {
+                headers["Authorization"] = "Token " + token;
+            }
+
+            let url = API_BASE_URL + endpoint;
+            const results = [];
+
+            while (url) {
+                const response = await fetch(url, { headers });
+
+                if (!response.ok) {
+                    throw new Error(
+                        endpoint + " request failed (" + response.status + ")"
+                    );
+                }
+
+                const data = await response.json();
+
+                if (Array.isArray(data)) {
+                    results.push(...data);
+                    url = null;
+                } else if (data && Array.isArray(data.results)) {
+                    results.push(...data.results);
+                    url = data.next || null;
+                } else if (data && typeof data === "object") {
+                    results.push(data);
+                    url = null;
+                } else {
+                    url = null;
+                }
+            }
+
+            return results;
+        }
+
+        function getOrderStatus(order) {
+            return String(
+                order.status ||
+                order.order_status ||
+                "received"
+            ).toLowerCase().replace(/[\s-]+/g, "_");
+        }
+
+        function getOrderAmount(order) {
+            return Number(
+                order.final_amount ??
+                order.total_amount ??
+                order.amount ??
+                0
+            ) || 0;
+        }
+
+        function getPaymentAmount(payment) {
+            return Number(payment.amount ?? payment.payment_amount ?? 0) || 0;
+        }
+
+        function getOrderId(order) {
+            return String(order.id ?? order.order_id ?? "");
+        }
+
+        function getPaymentOrderId(payment) {
+            const value = payment.order;
+            if (value && typeof value === "object") {
+                return String(value.id ?? "");
+            }
+
+            return String(value ?? payment.order_id ?? "");
+        }
+
+        function renderStatusReport(orders) {
+            const body = document.getElementById("orderStatusBody");
+            body.replaceChildren();
+
+            STATUS_LIST.forEach(status => {
+                const count = orders.filter(
+                    order => getOrderStatus(order) === status.key
+                ).length;
+
+                const row = document.createElement("tr");
+                const labelCell = document.createElement("td");
+                const countCell = document.createElement("td");
+
+                labelCell.textContent = status.label;
+                countCell.textContent = count;
+
+                row.append(labelCell, countCell);
+                body.appendChild(row);
+            });
+        }
+
+        async function loadReports() {
+            const message = document.getElementById("reportMessage");
+
+            try {
+                const [customers, orders, payments] = await Promise.all([
+                    fetchAllPages("customers/"),
+                    fetchAllPages("orders/"),
+                    fetchAllPages("payments/")
+                ]);
+
+                const activeOrders = orders.filter(
+                    order => getOrderStatus(order) !== "cancelled"
+                );
+
+                const deliveredCount = orders.filter(
+                    order => getOrderStatus(order) === "delivered"
+                ).length;
+
+                const totalOrderAmount = activeOrders.reduce(
+                    (sum, order) => sum + getOrderAmount(order), 0
+                );
+
+                const totalPaymentsReceived = payments.reduce(
+                    (sum, payment) => sum + getPaymentAmount(payment), 0
+                );
+
+                const paymentsByOrder = {};
+
+                payments.forEach(payment => {
+                    const orderId = getPaymentOrderId(payment);
+
+                    if (orderId) {
+                        paymentsByOrder[orderId] =
+                            (paymentsByOrder[orderId] || 0) +
+                            getPaymentAmount(payment);
+                    }
+                });
+
+                const pendingAmount = activeOrders.reduce((sum, order) => {
+                    const paid = paymentsByOrder[getOrderId(order)] || 0;
+                    return sum + Math.max(0, getOrderAmount(order) - paid);
+                }, 0);
+
+                document.getElementById("totalCustomers").textContent =
+                    customers.length;
+
+                document.getElementById("totalOrders").textContent =
+                    orders.length;
+
+                document.getElementById("deliveredOrders").textContent =
+                    deliveredCount;
+
+                document.getElementById("totalOrderAmount").textContent =
+                    formatCurrency(totalOrderAmount);
+
+                document.getElementById("pendingPayments").textContent =
+                    formatCurrency(pendingAmount);
+
+                document.getElementById("summaryOrderAmount").textContent =
+                    formatCurrency(totalOrderAmount);
+
+                document.getElementById("summaryPaymentsReceived").textContent =
+                    formatCurrency(totalPaymentsReceived);
+
+                document.getElementById("summaryPendingAmount").textContent =
+                    formatCurrency(pendingAmount);
+
+                renderStatusReport(orders);
+
+                message.textContent = "Report data loaded successfully from the backend.";
+                message.className = "report-success";
+
+            } catch (error) {
+                console.error("Report loading error:", error);
+
+                message.textContent =
+                    "Unable to load report data. Please check that the backend is running and you are logged in.";
+
+                message.className = "report-error";
+            }
+        }
+
+        loadReports();
+    </script>
+</body>
+</html>

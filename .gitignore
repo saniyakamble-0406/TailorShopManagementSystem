@@ -1,0 +1,21 @@
+
+# Environment secrets
+**/.env
+
+# Python virtual environments
+**/venv/
+**/.venv/
+
+# Python cache files
+**/__pycache__/
+*.py[cod]
+
+# Local SQLite databases
+**/db.sqlite3
+# Node.js dependencies
+node_modules/
+**/node_modules/
+
+# Build and environment files
+.env.*
+!.env.example

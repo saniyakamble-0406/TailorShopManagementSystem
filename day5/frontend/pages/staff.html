@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Management - Tailor Shop Management System</title>
+
+    <link rel="stylesheet" href="../css/records.css">
+    <link rel="stylesheet" href="../css/soft-theme.css">
+
+    <style>
+        .staff-search-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        #staff-search {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #staff-inline-suggestion {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            box-sizing: border-box;
+            overflow: hidden;
+            white-space: pre;
+            pointer-events: none;
+            background: transparent;
+            display: none;
+        }
+
+        #staff-inline-suggestion[hidden] {
+            display: none !important;
+        }
+
+        #staff-suggestion-prefix {
+            color: transparent;
+        }
+
+        #staff-suggestion-suffix {
+            color: #9CA3AF;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="page-header">
+        <div>
+            <h1>Staff Management</h1>
+            <p>Manage tailor and staff member information</p>
+        </div>
+
+        <nav aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="admin-dashboard.html">Dashboard</a>
+            <a href="orders.html">Orders</a>
+            <a href="login.html">Logout</a>
+        </nav>
+    </header>
+
+    <main class="page-container">
+
+        <section class="toolbar">
+            <div>
+                <h2>Staff Members</h2>
+                <p>View staff details and employment status.</p>
+            </div>
+
+            <a href="staff-form.html" class="btn">
+                + Add Staff Member
+            </a>
+        </section>
+
+        <section class="search-box">
+            <label for="staff-search">Search Staff</label>
+
+            <div class="staff-search-wrapper">
+
+                <input
+                    type="search"
+                    id="staff-search"
+                    name="staff-search"
+                    placeholder="Search by name, phone or address"
+                    autocomplete="off"
+                    aria-label="Search staff"
+                >
+
+                <div
+                    id="staff-inline-suggestion"
+                    aria-hidden="true"
+                    hidden
+                ><span id="staff-suggestion-prefix"></span><span id="staff-suggestion-suffix"></span></div>
+
+            </div>
+        </section>
+
+        <section class="table-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Staff ID</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Joined Date</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td colspan="7">Loading staff records...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <p style="margin-top: 22px;">
+            <a href="admin-dashboard.html">&larr; Back to Dashboard</a>
+        </p>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Tailor Shop Management System. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/staff.js"></script>
+
+</body>
+</html>

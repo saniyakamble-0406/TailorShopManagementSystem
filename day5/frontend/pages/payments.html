@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payment Management - Tailor Shop Management System</title>
+
+    <meta
+        name="description"
+        content="View and manage customer payment records."
+    >
+
+    <link rel="stylesheet" href="../css/records.css">
+    <link rel="stylesheet" href="../css/soft-theme.css">
+</head>
+
+<body>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div>
+            <h1>Payment Management</h1>
+            <p>View and manage customer payment records</p>
+        </div>
+
+        <nav aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="admin-dashboard.html">Dashboard</a>
+            <a href="orders.html">Orders</a>
+            <a href="login.html">Logout</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-container">
+
+        <!-- Payment Toolbar -->
+        <section class="toolbar">
+            <div>
+                <h2>Payment Records</h2>
+                <p>Review payments recorded against tailoring orders.</p>
+            </div>
+
+            <a href="payment-form.html" class="btn">
+                + Record Payment
+            </a>
+        </section>
+
+        <!-- Payment Search -->
+        <section class="search-box">
+            <label for="payment-search">Search Payments</label>
+
+            <input
+                type="search"
+                id="payment-search"
+                name="payment-search"
+                placeholder="Search by payment ID or order number"
+                autocomplete="off"
+            >
+        </section>
+
+        <!-- Payment Records Table -->
+        <section class="table-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Payment ID</th>
+                        <th scope="col">Order Number</th>
+                        <th scope="col">Customer</th>
+                        <th scope="col">Amount (&#8377;)</th>
+                        <th scope="col">Payment Method</th>
+                        <th scope="col">Payment Date</th>
+                        <th scope="col">Notes</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td colspan="7">Loading payment records...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <p style="margin-top: 22px;">
+            <a href="admin-dashboard.html">
+                &larr; Back to Dashboard
+            </a>
+        </p>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            &copy; 2026 Tailor Shop Management System.
+            All rights reserved.
+        </p>
+    </footer>
+
+    <!-- Payment API and Search Functionality -->
+    <script src="../js/payments.js"></script>
+
+</body>
+</html>

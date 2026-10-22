@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tailor Shop Management System - Login</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/soft-theme.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <div class="login-card">
+
+            <h1>Tailor Shop Management System</h1>
+
+            <p class="subtitle">Login to continue</p>
+
+            <form id="loginForm">
+
+                <label for="username">Username</label>
+
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Enter username"
+                    autocomplete="username"
+                    required
+                >
+
+                <label for="password">Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter password"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <label for="role">Select Role</label>
+
+                <select id="role" name="role" required>
+                    <option value="">Select Role</option>
+                    <option value="admin">Admin</option>
+                    <option value="staff">Staff</option>
+                    <option value="customer">Customer</option>
+                </select>
+
+                <button type="submit" id="loginButton">
+                    Login
+                </button>
+
+                <p
+                    id="loginMessage"
+                    role="alert"
+                    aria-live="polite"
+                    style="margin-top: 12px; color: #B42318;"
+                ></p>
+
+            </form>
+
+            <p class="register-text">
+                New customer?
+                <a href="register.html">Create an account</a>
+            </p>
+
+        </div>
+
+    </div>
+
+    <script>
+        const loginForm = document.getElementById("loginForm");
+        const loginButton = document.getElementById("loginButton");
+        const loginMessage = document.getElementById("loginMessage");
+
+        const apiUrl = "http://127.0.0.1:8000/api/login/";
+
+        const dashboardPages = {
+            admin: "admin-dashboard.html",
+            staff: "staff-dashboard.html",
+            customer: "customer-dashboard.html"
+        };
+
+        loginForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            loginMessage.textContent = "";
+            loginButton.disabled = true;
+            loginButton.textContent = "Signing in...";
+
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value;
+            const role = document.getElementById("role").value;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password,
+                        role: role
+                    })
+                });
+
+                let data = {};
+
+                try {
+                    data = await response.json();
+                } catch {
+                    throw new Error("The server returned an invalid response.");
+                }
+
+                if (!response.ok) {
+                    throw new Error(
+                        data.detail || "Login failed. Check your credentials."
+                    );
+                }
+
+                if (!data.token || !dashboardPages[data.role]) {
+                    throw new Error("The login response is incomplete.");
+                }
+
+                // Keep login information for this browser tab's session.
+                sessionStorage.setItem("authToken", data.token);
+                sessionStorage.setItem("authUsername", data.username);
+                sessionStorage.setItem("authRole", data.role);
+
+                // Open the dashboard matching the authenticated role.
+                window.location.href = dashboardPages[data.role];
+
+            } catch (error) {
+                loginMessage.textContent =
+                    error.message ||
+                    "Unable to connect to the server. Please try again.";
+
+                loginButton.disabled = false;
+                loginButton.textContent = "Login";
+            }
+        });
+    </script>
+
+</body>
+</html>

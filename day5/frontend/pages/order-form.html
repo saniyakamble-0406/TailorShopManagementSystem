@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Order - Tailor Shop Management System</title>
+
+    <meta
+        name="description"
+        content="Create and update tailoring orders, clothing details and delivery information."
+    >
+
+    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="../css/soft-theme.css">
+</head>
+
+<body>
+
+    <!-- Page Header -->
+    <header class="form-header">
+        <div>
+            <h1>Create New Order</h1>
+            <p>Enter customer, clothing and delivery details</p>
+        </div>
+
+        <nav aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="admin-dashboard.html">Dashboard</a>
+            <a href="orders.html">Orders</a>
+        </nav>
+    </header>
+
+    <!-- Main Order Form -->
+    <main class="form-container">
+
+        <form class="customer-form">
+
+            <!-- Order Information -->
+            <section class="form-section">
+                <h2>Order Information</h2>
+
+                <div class="form-grid">
+
+                    <!-- Order Number -->
+                    <div class="form-group">
+                        <label for="order_number">Order Number</label>
+
+                        <input
+                            type="text"
+                            id="order_number"
+                            name="order_number"
+                            placeholder="e.g. ORD-2026-002"
+                            maxlength="30"
+                            autocomplete="off"
+                            required
+                        >
+                    </div>
+
+                    <!-- Customer -->
+                    <div class="form-group">
+                        <label for="customer">Customer</label>
+
+                        <select
+                            id="customer"
+                            name="customer"
+                            required
+                        >
+                            <option value="">Loading customers...</option>
+                        </select>
+                    </div>
+
+                    <!-- Fabric Source -->
+                    <div class="form-group">
+                        <label for="fabric_source">Fabric Source</label>
+
+                        <select
+                            id="fabric_source"
+                            name="fabric_source"
+                            required
+                        >
+                            <option value="">Select Fabric Source</option>
+                            <option value="customer">Customer Provided</option>
+                            <option value="shop">Shop Provided</option>
+                        </select>
+                    </div>
+
+                    <!-- Delivery Date -->
+                    <div class="form-group">
+                        <label for="delivery_date">Delivery Date</label>
+
+                        <input
+                            type="date"
+                            id="delivery_date"
+                            name="delivery_date"
+                            required
+                        >
+                    </div>
+
+                    <!-- Order Status -->
+                    <div class="form-group">
+                        <label for="status">Order Status</label>
+
+                        <select
+                            id="status"
+                            name="status"
+                            required
+                        >
+                            <option value="received">Received</option>
+                            <option value="measurement_confirmed">
+                                Measurement Confirmed
+                            </option>
+                            <option value="cutting">Cutting</option>
+                            <option value="stitching">Stitching</option>
+                            <option value="finishing">Finishing</option>
+                            <option value="ready">Ready</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="alteration">Alteration</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+
+                    <!-- Discount -->
+                    <div class="form-group">
+                        <label for="discount">Discount (&#8377;)</label>
+
+                        <input
+                            type="number"
+                            id="discount"
+                            name="discount"
+                            min="0"
+                            step="0.01"
+                            value="0"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <!-- Special Instructions -->
+                <div class="form-group full-width">
+                    <label for="special_instructions">
+                        Special Instructions
+                    </label>
+
+                    <textarea
+                        id="special_instructions"
+                        name="special_instructions"
+                        rows="4"
+                        placeholder="Enter fitting instructions or other requirements"
+                    ></textarea>
+                </div>
+
+            </section>
+
+            <!-- Clothing and Service Details -->
+            <section class="form-section" style="margin-top: 30px;">
+                <h2>Clothing and Service Details</h2>
+
+                <div class="form-grid">
+
+                    <!-- Tailoring Service -->
+                    <div class="form-group">
+                        <label for="service">Tailoring Service</label>
+
+                        <select
+                            id="service"
+                            name="service"
+                            required
+                        >
+                            <option value="">Loading services...</option>
+                        </select>
+                    </div>
+
+                    <!-- Clothing Type -->
+                    <div class="form-group">
+                        <label for="clothing_type">Clothing Type</label>
+
+                        <select
+                            id="clothing_type"
+                            name="clothing_type"
+                            required
+                        >
+                            <option value="">Select Clothing Type</option>
+                            <option value="Shirt">Shirt</option>
+                            <option value="Pant">Pant</option>
+                            <option value="Kurta">Kurta</option>
+                            <option value="Blouse">Blouse</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Quantity -->
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+
+                        <input
+                            type="number"
+                            id="quantity"
+                            name="quantity"
+                            min="1"
+                            step="1"
+                            value="1"
+                            required
+                        >
+                    </div>
+
+                    <!-- Unit Price -->
+                    <div class="form-group">
+                        <label for="unit_price">Unit Price (&#8377;)</label>
+
+                        <input
+                            type="number"
+                            id="unit_price"
+                            name="unit_price"
+                            min="0"
+                            step="0.01"
+                            placeholder="Select a service first"
+                            required
+                        >
+                    </div>
+
+                    <!-- Subtotal -->
+                    <div class="form-group">
+                        <label for="subtotal">Subtotal (&#8377;)</label>
+
+                        <input
+                            type="number"
+                            id="subtotal"
+                            name="subtotal"
+                            min="0"
+                            step="0.01"
+                            placeholder="Calculated automatically"
+                            readonly
+                        >
+                    </div>
+
+                    <!-- Final Amount -->
+                    <div class="form-group">
+                        <label for="final_amount">
+                            Final Amount (&#8377;)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="final_amount"
+                            name="final_amount"
+                            min="0"
+                            step="0.01"
+                            placeholder="Calculated automatically"
+                            readonly
+                        >
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Form Actions -->
+            <div class="form-actions">
+
+                <a href="orders.html" class="cancel-btn">
+                    Cancel
+                </a>
+
+                <button type="submit" class="save-btn">
+                    Save Order
+                </button>
+
+            </div>
+
+        </form>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            &copy; 2026 Tailor Shop Management System.
+            All rights reserved.
+        </p>
+    </footer>
+
+    <!-- Order Form JavaScript -->
+    <script src="../js/order-form.js"></script>
+
+</body>
+</html>

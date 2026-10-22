@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Services - Tailor Shop Management System</title>
+
+    <link rel="stylesheet" href="../css/records.css">
+    <link rel="stylesheet" href="../css/soft-theme.css">
+
+    <style>
+        .service-search-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        #service-search {
+            position: relative;
+            z-index: 1;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: transparent;
+        }
+
+        #service-inline-suggestion {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: none;
+            box-sizing: border-box;
+            overflow: hidden;
+            white-space: pre;
+            pointer-events: none;
+            background-color: transparent;
+        }
+
+        #service-inline-suggestion[hidden] {
+            display: none !important;
+        }
+
+        #service-suggestion-prefix {
+            color: transparent;
+        }
+
+        #service-suggestion-suffix {
+            color: #9CA3AF;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div>
+            <h1>Services Management</h1>
+            <p>Manage tailoring services, prices and completion time</p>
+        </div>
+
+        <nav aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="admin-dashboard.html">Dashboard</a>
+            <a href="orders.html">Orders</a>
+            <a href="login.html">Logout</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-container">
+
+        <!-- Services Toolbar -->
+        <section class="toolbar">
+            <div>
+                <h2>Tailoring Services</h2>
+                <p>View and manage the services offered by the shop.</p>
+            </div>
+
+            <a href="service-form.html" class="btn">
+                + Add Service
+            </a>
+        </section>
+
+        <!-- Search Services with Inline Suggestion -->
+        <section class="search-box">
+            <label for="service-search">Search Services</label>
+
+            <div class="service-search-wrapper">
+
+                <input
+                    type="search"
+                    id="service-search"
+                    name="service-search"
+                    placeholder="Search by service name"
+                    autocomplete="off"
+                    aria-label="Search services by name"
+                >
+
+                <div
+                    id="service-inline-suggestion"
+                    aria-hidden="true"
+                    hidden
+                ><span id="service-suggestion-prefix"></span><span id="service-suggestion-suffix"></span></div>
+
+            </div>
+        </section>
+
+        <!-- Services Table -->
+        <section class="table-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Service Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Price (&#8377;)</th>
+                        <th scope="col">Estimated Days</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td colspan="7">Loading services...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <p style="margin-top: 22px;">
+            <a href="admin-dashboard.html">
+                &larr; Back to Dashboard
+            </a>
+        </p>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            &copy; 2026 Tailor Shop Management System.
+            All rights reserved.
+        </p>
+    </footer>
+
+    <!-- Services API, Search and Inline Suggestion -->
+    <script src="../js/services.js"></script>
+
+</body>
+</html>

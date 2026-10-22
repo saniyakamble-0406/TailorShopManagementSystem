@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | TailorShop</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+<div class="admin-layout" id="adminLayout">
+
+    <aside class="sidebar" id="sidebar">
+        <a href="../index.html" class="sidebar-brand">
+            <span class="brand-icon">&#9986;</span>
+            <span class="brand-text">
+                <strong>TailorShop</strong>
+                <small>STITCHING YOUR STYLE</small>
+            </span>
+        </a>
+
+        <div class="sidebar-label">MAIN MENU</div>
+
+        <nav class="sidebar-nav" aria-label="Admin navigation">
+            <a href="admin-dashboard.html" class="sidebar-link active">
+                <span class="nav-icon">&#9635;</span><span>Dashboard</span>
+            </a>
+            <a href="customers.html" class="sidebar-link">
+                <span class="nav-icon">&#9823;</span><span>Customers</span>
+            </a>
+            <a href="staff.html" class="sidebar-link">
+                <span class="nav-icon">&#9822;</span><span>Staff Management</span>
+            </a>
+            <a href="measurements.html" class="sidebar-link">
+                <span class="nav-icon">&#9998;</span><span>Measurements</span>
+            </a>
+            <a href="services.html" class="sidebar-link">
+                <span class="nav-icon">&#10022;</span><span>Services</span>
+            </a>
+            <a href="orders.html" class="sidebar-link">
+                <span class="nav-icon">&#9633;</span><span>Orders</span>
+            </a>
+            <a href="payments.html" class="sidebar-link">
+                <span class="nav-icon">&#8377;</span><span>Payments</span>
+            </a>
+            <a href="reports.html" class="sidebar-link">
+                <span class="nav-icon">&#9636;</span><span>Reports</span>
+            </a>
+            <a href="notifications.html" class="sidebar-link">
+                <span class="nav-icon">&#9673;</span><span>Notifications</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-help-icon">&#9825;</div>
+            <strong>Need assistance?</strong>
+            <p>Manage your shop with ease.</p>
+            <a href="profile.html">View Admin Profile &#8594;</a>
+        </div>
+
+        <a href="login.html" class="sidebar-logout">
+            <span>&#8594;</span> Logout
+        </a>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div class="topbar-heading">
+                <button class="menu-toggle" id="menuToggle" type="button"
+                        aria-label="Toggle navigation"
+                        aria-controls="sidebar" aria-expanded="false">
+                    &#9776;
+                </button>
+                <div>
+                    <p class="topbar-eyebrow">ADMIN WORKSPACE</p>
+                    <h1>Dashboard Overview</h1>
+                </div>
+            </div>
+
+            <div class="topbar-actions">
+                <a href="../index.html" class="website-link">View Website &#8599;</a>
+                <a href="profile.html" class="profile-button">
+                    <span class="profile-avatar">A</span>
+                    <span class="profile-name">
+                        <strong>Administrator</strong>
+                        <small>Admin Account</small>
+                    </span>
+                </a>
+            </div>
+        </header>
+
+        <div class="dashboard-content">
+
+            <section class="welcome-panel">
+                <div class="welcome-copy">
+                    <span class="welcome-badge">YOUR WORKSPACE</span>
+                    <h2>Welcome back, Admin!</h2>
+                    <p>
+                        Here's an overview of your tailor shop.
+                        Manage customers, orders, measurements and payments
+                        from one organised workspace.
+                    </p>
+                    <div class="welcome-actions">
+                        <a href="customer-form.html" class="action-primary">
+                            &#43; Add Customer
+                        </a>
+                        <a href="order-form.html" class="action-secondary">
+                            Create New Order &#8594;
+                        </a>
+                    </div>
+                </div>
+
+                <div class="welcome-decoration" aria-hidden="true">
+                    <div class="decoration-circle"><span>&#9986;</span></div>
+                    <span class="decoration-star star-one">&#10022;</span>
+                    <span class="decoration-star star-two">&#10022;</span>
+                </div>
+            </section>
+
+            <section class="stats-section">
+                <div class="section-title-row">
+                    <div>
+                        <p class="section-kicker">AT A GLANCE</p>
+                        <h2>Shop Overview</h2>
+                    </div>
+                    <span class="sample-label">Live Dashboard</span>
+                </div>
+
+                <div class="stats-grid">
+                    <article class="stat-card customers-stat">
+                        <div class="stat-card-top">
+                            <span class="stat-icon">&#9823;</span>
+                            <span class="stat-tag">Customers</span>
+                        </div>
+                        <p>Total Customers</p>
+                        <h3 id="totalCustomers">Loading...</h3>
+                        <small>Customer records</small>
+                    </article>
+
+                    <article class="stat-card orders-stat">
+                        <div class="stat-card-top">
+                            <span class="stat-icon">&#9633;</span>
+                            <span class="stat-tag">Orders</span>
+                        </div>
+                        <p>Active Orders</p>
+                        <h3 id="activeOrders">Loading...</h3>
+                        <small>Orders in progress</small>
+                    </article>
+
+                    <article class="stat-card payments-stat">
+                        <div class="stat-card-top">
+                            <span class="stat-icon">&#8377;</span>
+                            <span class="stat-tag">Payments</span>
+                        </div>
+                        <p>Pending Payments</p>
+                        <h3 id="pendingPayments">Loading...</h3>
+                        <small>Outstanding order balance</small>
+                    </article>
+
+                    <article class="stat-card ready-stat">
+                        <div class="stat-card-top">
+                            <span class="stat-icon">&#10003;</span>
+                            <span class="stat-tag">Ready</span>
+                        </div>
+                        <p>Ready Orders</p>
+                        <h3 id="readyOrders">Loading...</h3>
+                        <small>Awaiting collection</small>
+                    </article>
+                </div>
+
+                <p class="data-note" id="dashboardMessage" role="status">
+                    Loading dashboard data from the server...
+                </p>
+            </section>
+
+            <section class="quick-section">
+                <div class="section-title-row">
+                    <div>
+                        <p class="section-kicker">WORK SMARTER</p>
+                        <h2>Quick Actions</h2>
+                    </div>
+                </div>
+
+                <div class="quick-grid">
+                    <a href="customer-form.html" class="quick-card">
+                        <span class="quick-icon lavender-icon">&#43;</span>
+                        <span class="quick-copy">
+                            <strong>Add Customer</strong>
+                            <small>Create a customer record</small>
+                        </span>
+                        <span class="quick-arrow">&#8599;</span>
+                    </a>
+
+                    <a href="order-form.html" class="quick-card">
+                        <span class="quick-icon pink-icon">&#9633;</span>
+                        <span class="quick-copy">
+                            <strong>Create Order</strong>
+                            <small>Start a new order</small>
+                        </span>
+                        <span class="quick-arrow">&#8599;</span>
+                    </a>
+
+                    <a href="measurement-form.html" class="quick-card">
+                        <span class="quick-icon cream-icon">&#9998;</span>
+                        <span class="quick-copy">
+                            <strong>Add Measurement</strong>
+                            <small>Record clothing sizes</small>
+                        </span>
+                        <span class="quick-arrow">&#8599;</span>
+                    </a>
+
+                    <a href="payment-form.html" class="quick-card">
+                        <span class="quick-icon lavender-icon">&#8377;</span>
+                        <span class="quick-copy">
+                            <strong>Record Payment</strong>
+                            <small>Enter a payment record</small>
+                        </span>
+                        <span class="quick-arrow">&#8599;</span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="modules-section">
+                <div class="section-title-row">
+                    <div>
+                        <p class="section-kicker">MANAGE YOUR BUSINESS</p>
+                        <h2>Management Modules</h2>
+                    </div>
+                </div>
+
+                <div class="modules-grid">
+                    <article class="module-card">
+                        <span class="module-icon lavender-icon">&#9823;</span>
+                        <h3>Customers</h3>
+                        <p>Create, search and manage customer profiles and records.</p>
+                        <a href="customers.html">Manage Customers <span>&#8594;</span></a>
+                    </article>
+
+                    <article class="module-card">
+                        <span class="module-icon pink-icon">&#9822;</span>
+                        <h3>Staff</h3>
+                        <p>Manage staff members and their information.</p>
+                        <a href="staff.html">Manage Staff <span>&#8594;</span></a>
+                    </article>
+
+                    <article class="module-card">
+                        <span class="module-icon cream-icon">&#10022;</span>
+                        <h3>Services</h3>
+                        <p>Review tailoring services, prices and completion time.</p>
+                        <a href="services.html">Manage Services <span>&#8594;</span></a>
+                    </article>
+
+                    <article class="module-card">
+                        <span class="module-icon lavender-icon">&#9633;</span>
+                        <h3>Orders</h3>
+                        <p>View customer orders, order details and their status.</p>
+                        <a href="orders.html">Manage Orders <span>&#8594;</span></a>
+                    </article>
+
+                    <article class="module-card">
+                        <span class="module-icon pink-icon">&#8377;</span>
+                        <h3>Payments</h3>
+                        <p>Track advance, partial, final and pending payments.</p>
+                        <a href="payments.html">Manage Payments <span>&#8594;</span></a>
+                    </article>
+
+                    <article class="module-card">
+                        <span class="module-icon cream-icon">&#9636;</span>
+                        <h3>Reports</h3>
+                        <p>Review reports related to sales, orders and payments.</p>
+                        <a href="reports.html">View Reports <span>&#8594;</span></a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="recent-section">
+                <div class="section-title-row">
+                    <div>
+                        <p class="section-kicker">ORDER MANAGEMENT</p>
+                        <h2>Recent Orders</h2>
+                    </div>
+                    <a href="orders.html" class="view-all-link">
+                        View All Orders &#8594;
+                    </a>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order Number</th>
+                                <th>Customer</th>
+                                <th>Clothing</th>
+                                <th>Status</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentOrdersBody">
+                            <tr>
+                                <td colspan="5">Loading recent orders...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="data-note" id="recentOrdersMessage"></p>
+            </section>
+
+            <footer class="dashboard-footer">
+                <div>
+                    <strong>TailorShop</strong>
+                    <span>Stitching your style, beautifully.</span>
+                </div>
+                <p>&copy; 2026 TailorShop Management System. All rights reserved.</p>
+            </footer>
+
+        </div>
+    </main>
+</div>
+
+<script>
+    const adminLayout = document.getElementById("adminLayout");
+    const menuToggle = document.getElementById("menuToggle");
+    const sidebarLinks = document.querySelectorAll(".sidebar-link");
+
+    menuToggle.addEventListener("click", function () {
+        const isOpen = adminLayout.classList.toggle("sidebar-open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    sidebarLinks.forEach(function (link) {
+        link.addEventListener("click", function () {
+            adminLayout.classList.remove("sidebar-open");
+            menuToggle.setAttribute("aria-expanded", "false");
+        });
+    });
+</script>
+
+<script src="../js/admin-dashboard.js"></script>
+</body>
+</html>

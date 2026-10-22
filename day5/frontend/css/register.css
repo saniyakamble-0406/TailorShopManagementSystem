@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #047857,
+        #0D9488,
+        #A3E635
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 15px;
+    color: #064E3B;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.login-card {
+    width: 100%;
+    padding: 36px;
+    border-radius: 22px;
+    background: linear-gradient(
+        145deg,
+        #D1FAE5,
+        #CCFBF1,
+        #FEF9C3
+    );
+    border: 2px solid #A7F3D0;
+    box-shadow: 0 20px 45px #064E3B55;
+}
+
+.login-card h1 {
+    color: #047857;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #0F766E;
+    margin-bottom: 25px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    color: #065F46;
+    margin-bottom: 7px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 17px;
+    border: 1px solid #5EEAD4;
+    border-radius: 9px;
+    background: #F0FDFA;
+    color: #064E3B;
+    font-size: 15px;
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #059669;
+    box-shadow: 0 0 0 3px #34D39955;
+}
+
+input::placeholder {
+    color: #6B9088;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 9px;
+    background: linear-gradient(90deg, #047857, #0D9488);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 7px 15px #04785733;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #065F46, #0F766E);
+    transform: translateY(-2px);
+}
+
+.register-text {
+    text-align: center;
+    margin-top: 20px;
+    color: #065F46;
+    font-size: 14px;
+}
+
+.register-text a {
+    color: #B45309;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-text a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 25px 20px;
+    }
+
+    .login-card h1 {
+        font-size: 25px;
+    }
+}

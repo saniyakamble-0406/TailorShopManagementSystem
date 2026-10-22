@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Measurement - Tailor Shop Management System</title>
+    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="../css/soft-theme.css">
+</head>
+<body>
+
+    <header class="form-header">
+        <div>
+            <h1>Add Measurement</h1>
+            <p>Save clothing measurements for a customer</p>
+        </div>
+
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="admin-dashboard.html">Dashboard</a>
+            <a href="measurements.html">Measurements</a>
+        </nav>
+    </header>
+
+    <main class="form-container">
+
+        <form class="customer-form">
+
+            <section class="form-section">
+                <h2>Measurement Information</h2>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="customer">Customer</label>
+                        <select id="customer" name="customer" required>
+                            <option value="">Select Customer</option>
+                            <option value="1">Sample Customer</option>
+                            <option value="2">Demo Customer</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clothing_type">Clothing Type</label>
+                        <select id="clothing_type" name="clothing_type" required>
+                            <option value="">Select Clothing Type</option>
+                            <option value="Shirt">Shirt</option>
+                            <option value="Pant">Pant</option>
+                            <option value="Kurta">Kurta</option>
+                            <option value="Blouse">Blouse</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="measured_at">Measurement Date</label>
+                        <input
+                            type="date"
+                            id="measured_at"
+                            name="measured_at"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="unit">Measurement Unit</label>
+                        <select id="unit" name="unit" required>
+                            <option value="inches">Inches</option>
+                            <option value="cm">Centimeters (cm)</option>
+                        </select>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="form-section" style="margin-top: 30px;">
+                <h2>Body Measurements</h2>
+                <p style="margin-bottom: 22px;">
+                    Enter the applicable measurements for the selected clothing type.
+                </p>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="chest">Chest</label>
+                        <input type="number" id="chest" name="chest"
+                               min="0" step="0.1" placeholder="e.g. 38">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="shoulder">Shoulder</label>
+                        <input type="number" id="shoulder" name="shoulder"
+                               min="0" step="0.1" placeholder="e.g. 17">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sleeve">Sleeve Length</label>
+                        <input type="number" id="sleeve" name="sleeve"
+                               min="0" step="0.1" placeholder="e.g. 24">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="shirt_length">Shirt / Kurta Length</label>
+                        <input type="number" id="shirt_length" name="shirt_length"
+                               min="0" step="0.1" placeholder="Enter length">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="waist">Waist</label>
+                        <input type="number" id="waist" name="waist"
+                               min="0" step="0.1" placeholder="Enter waist">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hip">Hip</label>
+                        <input type="number" id="hip" name="hip"
+                               min="0" step="0.1" placeholder="Enter hip">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pant_length">Pant Length</label>
+                        <input type="number" id="pant_length" name="pant_length"
+                               min="0" step="0.1" placeholder="Enter pant length">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inseam">Inseam</label>
+                        <input type="number" id="inseam" name="inseam"
+                               min="0" step="0.1" placeholder="Enter inseam">
+                    </div>
+
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="measurement_notes">Measurement Notes</label>
+                    <textarea
+                        id="measurement_notes"
+                        name="measurement_notes"
+                        rows="4"
+                        placeholder="Enter any special fitting instructions"
+                    ></textarea>
+                </div>
+            </section>
+
+            <div class="form-actions">
+                <a href="measurements.html" class="cancel-btn">Cancel</a>
+                <button type="submit" class="save-btn">Save Measurement</button>
+            </div>
+
+        </form>
+
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 Tailor Shop Management System</p>
+    </footer>
+
+</body>
+</html>

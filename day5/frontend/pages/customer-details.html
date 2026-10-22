@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Details - Tailor Shop Management System</title>
+
+    <link rel="stylesheet" href="../css/records.css">
+    <link rel="stylesheet" href="../css/soft-theme.css">
+</head>
+
+<body>
+
+    <header class="page-header">
+        <div>
+            <h1>Customer Details</h1>
+            <p>View customer information and order history</p>
+        </div>
+
+        <nav aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="admin-dashboard.html">Dashboard</a>
+            <a href="customers.html">Customers</a>
+        </nav>
+    </header>
+
+    <main class="page-container">
+
+        <!-- Customer heading -->
+        <section class="toolbar">
+            <div>
+                <h2 id="customer-name">Loading customer...</h2>
+                <p id="customer-id">Loading customer information...</p>
+            </div>
+
+            <a
+                href="customers.html"
+                id="edit-customer-link"
+                class="btn"
+            >
+                Edit Customer
+            </a>
+        </section>
+
+        <!-- Personal Information -->
+        <section class="table-section">
+            <h2>Personal Information</h2>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <th scope="row">Full Name</th>
+                        <td id="detail-full-name">Loading...</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Phone</th>
+                        <td id="detail-phone">Loading...</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Email</th>
+                        <td id="detail-email">Loading...</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Address</th>
+                        <td id="detail-address">Loading...</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Notes</th>
+                        <td id="detail-notes">Loading...</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p id="customer-message" role="status" aria-live="polite"></p>
+        </section>
+
+        <!-- Order History -->
+        <section class="table-section" style="margin-top: 25px;">
+            <h2>Order History</h2>
+
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order Number</th>
+                            <th>Clothing Type</th>
+                            <th>Order Status</th>
+                            <th>Delivery Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="order-history-body">
+                        <tr>
+                            <td colspan="4">Loading order history...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p id="order-message" role="status" aria-live="polite"></p>
+        </section>
+
+        <p style="margin-top: 25px;">
+            <a href="customers.html">&larr; Back to Customers</a>
+        </p>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Tailor Shop Management System. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/customer-details.js"></script>
+
+</body>
+</html>
